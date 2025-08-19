@@ -18,7 +18,13 @@ app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'sta
 app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
 
 # Activer CORS pour permettre les requêtes depuis le frontend
-CORS(app)
+CORS(app, origins=[
+    'https://leshisoiresdetontonyahya.vercel.app',
+    'https://leshisoiresdetontonyahya-*.vercel.app',
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'http://localhost:5000'
+])
 
 app.register_blueprint(user_bp, url_prefix='/api')
 app.register_blueprint(stories_bp, url_prefix='/api')
